@@ -1,6 +1,6 @@
 {
   "name": "@renzp/idxdb",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "一款零依赖、快速灵活、简单易用的indexedDB API库",
   "author": "renzp <1074720760.qq.com>",
   "repository": {
@@ -12,16 +12,25 @@
     "url": "https://github.com/renzp94/idxdb/issues"
   },
   "main": "./dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "./dist/index.d.ts",
   "homepage": "https://github.com/renzp94/idxdb#readme",
-  "keywords": ["indexeddb", "idxdb", "database", "web sql"],
+  "keywords": [
+    "indexeddb",
+    "idxdb",
+    "database",
+    "web sql"
+  ],
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "tsup",
     "pub": "npm run build && standard-version && npm publish"
