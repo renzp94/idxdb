@@ -12,25 +12,15 @@
     "url": "https://github.com/renzp94/idxdb/issues"
   },
   "main": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "types": "./dist/index.d.ts",
   "homepage": "https://github.com/renzp94/idxdb#readme",
-  "keywords": [
-    "indexeddb",
-    "idxdb",
-    "database",
-    "web sql"
-  ],
+  "keywords": ["indexeddb", "idxdb", "database", "web sql"],
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "build": "tsup",
     "pub": "npm run build && standard-version && npm publish"
