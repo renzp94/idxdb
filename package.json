@@ -1,0 +1,41 @@
+{
+  "name": "@renzp/idxdb",
+  "version": "0.0.0",
+  "description": "一款零依赖、快速灵活、简单易用的indexedDB API库",
+  "author": "renzp <1074720760.qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renzp94/idxdb.git"
+  },
+  "module": "./dist/index.js",
+  "bugs": {
+    "url": "https://github.com/renzp94/idxdb/issues"
+  },
+  "main": "./dist/index.js",
+  "files": ["dist"],
+  "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/renzp94/idxdb#readme",
+  "keywords": ["indexeddb", "idxdb", "database", "web sql"],
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build": "tsup",
+    "pub": "npm run build && standard-version && npm publish"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "^1.4.1",
+    "@happy-dom/global-registrator": "^12.10.3",
+    "bun-types": "latest",
+    "fake-indexeddb": "^5.0.2",
+    "standard-version": "^9.5.0",
+    "tsup": "^8.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

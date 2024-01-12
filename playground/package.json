@@ -1,0 +1,47 @@
+{
+  "name": "playground",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "rzpack",
+    "build": "rzpack build",
+    "build:time": "rzpack build --bundle-time",
+    "build:size": "rzpack build --bundle-size",
+    "preview": "rzpack preview",
+    "prepare": "npx simple-git-hooks",
+    "lint": "biome check --apply src && biome format --write src && stylelint --fix src/**/*.{less,css}",
+    "lint:unsafe": "biome check --apply-unsafe src && biome format --write src && stylelint --fix src/**/*.{less,css}"
+  },
+  "browserslist": [">0.2%", "not dead", "not IE 11", "not op_mini all"],
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": ["biome check", "biome format --write"],
+    "src/**/*.{less,css}": "stylelint --fix"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@ant-design/icons": "^5.2.4",
+    "@renzp/classes": "^0.0.3",
+    "ahooks": "^3.7.8",
+    "antd": "^5.12.8",
+    "dayjs": "^1.11.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "rzpack": "^0.2.5",
+    "typescript": "5.1.6",
+    "nodemon": "^3.0.1",
+    "@biomejs/biome": "^1.1.2",
+    "simple-git-hooks": "^2.9.0",
+    "lint-staged": "^13.2.3",
+    "stylelint": "^14.16.1",
+    "stylelint-config-property-sort-order-smacss": "^9.1.0",
+    "stylelint-config-standard": "^29.0.0",
+    "stylelint-order": "^5.0.0",
+    "postcss-less": "^6.0.0"
+  }
+}
