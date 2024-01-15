@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/renzp94/idxdb/compare/v0.0.1...v0.0.2) (2024-01-15)
+
+
+### 其他
+
+* 移除无用代码 ([fd32d5c](https://github.com/renzp94/idxdb/commit/fd32d5c6406591f2e3e87f0abb7d46118ecef6cd))
+
+
+### 新功能
+
+* 添加批量添加功能: addList ([10a8a5a](https://github.com/renzp94/idxdb/commit/10a8a5a74790baebcf7a9aa96fefa84d33d31cd9))
+
 ### 0.0.1 (2024-01-12)
 
 
