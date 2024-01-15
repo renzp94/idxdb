@@ -10,7 +10,7 @@ import { columns, headerColumns } from './configs'
 
 const DemoPage = () => {
   const idxDB = useIdxDB()
-  const { modal } = App.useApp()
+  const { modal, message } = App.useApp()
   const [form] = Form.useForm()
   const { showModal, modalProps, modalData, setModalData, setTitle } =
     useModal<string>()
@@ -41,10 +41,30 @@ const DemoPage = () => {
     showModal()
   }
 
+  const onBatchAdd = async () => {
+    await idxDB?.store('t_user')?.addList([
+      {
+        id: Date.now(),
+        name: '批量添加1',
+        age: 18,
+      },
+      {
+        id: Date.now() + 1,
+        name: '批量添加2',
+        age: 18,
+      },
+    ])
+    message.success('操作成功')
+    refresh()
+  }
+
   const tools = (
     <Space>
       <Button type="primary" onClick={onShowAddModal}>
         新增
+      </Button>
+      <Button type="primary" onClick={onBatchAdd}>
+        批量新增
       </Button>
     </Space>
   )

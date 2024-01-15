@@ -27,19 +27,37 @@ export class Store {
     this.#db = db
     this.#name = name
   }
-  #createTransaction(mode: IDBTransactionMode) {
+  #createTransactionStore(mode: IDBTransactionMode) {
     return this.#db.transaction([this.#name], mode).objectStore(this.#name)
   }
   #createRequest<T = any>(
     mode: IDBTransactionMode,
     fn: (transaction: IDBObjectStore) => IDBRequest<T>,
   ) {
-    return requestPromise(fn(this.#createTransaction(mode)))
+    return requestPromise(fn(this.#createTransactionStore(mode)))
   }
   async add<T = unknown>(data: T) {
     return this.#createRequest('readwrite', (transaction) =>
       transaction.add(data),
     )
+  }
+  async addList<T = unknown[]>(data: T) {
+    const transaction = this.#db.transaction([this.#name], 'readwrite')
+    const store = transaction.objectStore(this.#name)
+
+    if (!Array.isArray(data)) {
+      return Promise.reject(new Error('addList需要传入一个数组数据'))
+    }
+
+    for (const item of (data ?? []) as Array<unknown>) {
+      store.add(item)
+    }
+    return new Promise((resolve, reject) => {
+      transaction.oncomplete = () => {
+        resolve(true)
+      }
+      transaction.onerror = reject
+    })
   }
   async deleteByKey(key: string) {
     return this.#createRequest('readwrite', (transaction) =>
@@ -47,7 +65,7 @@ export class Store {
     )
   }
   #deleteByQuery(isDelete: (value: any) => boolean) {
-    const request = this.#createTransaction('readwrite').openCursor()
+    const request = this.#createTransactionStore('readwrite').openCursor()
     let success = false
     return createCursorRequest<boolean>(request, (cursor, resolve) => {
       if (cursor) {
@@ -107,7 +125,7 @@ export class Store {
   #query<T = any>(isQuery: (value: any) => boolean) {
     const list: T[] = [] as unknown as T[]
 
-    const request = this.#createTransaction('readwrite').openCursor()
+    const request = this.#createTransactionStore('readwrite').openCursor()
     return createCursorRequest<T[]>(request, (cursor, resolve) => {
       if (cursor) {
         if (isQuery(cursor.value)) {
