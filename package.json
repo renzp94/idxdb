@@ -1,6 +1,6 @@
 {
   "name": "@renzp/idxdb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "一款零依赖、快速灵活、简单易用的indexedDB API库",
   "author": "renzp <1074720760.qq.com>",
   "repository": {
