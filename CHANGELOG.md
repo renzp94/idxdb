@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/renzp94/idxdb/compare/v0.0.3...v0.0.4) (2024-01-16)
+
+
+### Bug修复
+
+* 修复query查询store中查询字段报错的问题 ([176d61a](https://github.com/renzp94/idxdb/commit/176d61a6b36e2823fe973c4ddb41ae4a75c1de63))
+
 ### [0.0.3](https://github.com/renzp94/idxdb/compare/v0.0.2...v0.0.3) (2024-01-16)
 
 
