@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/renzp94/idxdb/compare/v0.0.4...v0.0.5) (2024-01-16)
+
+
+### 新功能
+
+* 添加keyPath批量更新功能: updateListByKeyPath ([8bbd19e](https://github.com/renzp94/idxdb/commit/8bbd19eb8bf07a3bf8e5581539c52fad1f642478))
+
 ### [0.0.4](https://github.com/renzp94/idxdb/compare/v0.0.3...v0.0.4) (2024-01-16)
 
 
