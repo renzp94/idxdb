@@ -102,6 +102,11 @@ export class Store {
 
     return false
   }
+  async clear() {
+    return this.#createRequest('readwrite', (transaction) =>
+      transaction.clear(),
+    )
+  }
   async updateByKey(data: any, key: string) {
     return this.#createRequest('readwrite', (transaction) =>
       transaction.put(data, key),
