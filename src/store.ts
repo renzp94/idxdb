@@ -117,6 +117,26 @@ export class Store {
       transaction.put(data),
     )
   }
+  async updateListByKeyPath<T = unknown[]>(data: T) {
+    const transaction = this.#db.transaction([this.#name], 'readwrite')
+    const store = transaction.objectStore(this.#name)
+
+    if (!Array.isArray(data)) {
+      return Promise.reject(
+        new Error('updateListByKeyPath需要传入一个数组数据'),
+      )
+    }
+
+    for (const item of (data ?? []) as Array<unknown>) {
+      store.put(item)
+    }
+    return new Promise((resolve, reject) => {
+      transaction.oncomplete = () => {
+        resolve(true)
+      }
+      transaction.onerror = reject
+    })
+  }
   async getByKey(key: any) {
     return this.#createRequest('readonly', (transaction) =>
       transaction.get(key),
