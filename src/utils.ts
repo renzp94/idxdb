@@ -28,7 +28,7 @@ export const findQuery = (data: any, query: any) => {
   const keys = Object.keys(query).filter((key) => query[key])
 
   return keys.reduce((prev, key) => {
-    const target = data[key]
+    const target = data?.[key]
     const value = query[key]
 
     if (target === value) {
@@ -43,7 +43,7 @@ export const findLikeQuery = (data: any, query: any) => {
   const keys = Object.keys(query).filter((key) => query[key])
 
   return keys.reduce((prev, key) => {
-    const target = data[key]
+    const target = data?.[key]
     const value = query[key]
 
     if (
@@ -53,7 +53,7 @@ export const findLikeQuery = (data: any, query: any) => {
       return prev && true
     }
 
-    if (typeof value === 'string' && target.includes(value)) {
+    if (typeof value === 'string' && target?.includes?.(value)) {
       return prev && true
     }
 
