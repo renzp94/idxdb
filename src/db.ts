@@ -29,6 +29,7 @@ export class IdxDB {
   }
   /**
    * 使用数据库
+   *
    * @param options.name 数据库名
    * @param options.version 版本
    * @param options.stores 存储仓库
@@ -100,7 +101,6 @@ export class IdxDB {
   }
   /**
    * 连接数据库
-   * @returns 当前实例对象
    */
   async connect(): Promise<void> {
     const databases = await window.indexedDB.databases()
@@ -120,12 +120,24 @@ export class IdxDB {
       request.onerror = reject
     })
   }
+  /**
+   * 关闭数据库
+   */
   close() {
     this.#db?.close()
   }
+  /**
+   * 获取数据库对象
+   * @returns 如果有则返回数据库对象，否则返回undefined
+   */
   getDBDatabase() {
     return this.#db
   }
+  /**
+   * 创建存储对象
+   * @param storeName 存储名称
+   * @returns 返回存储对象
+   */
   store(storeName: string) {
     if (this.#db) {
       return new Store(this.#db, storeName)
