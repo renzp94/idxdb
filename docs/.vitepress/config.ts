@@ -4,7 +4,6 @@ import pkg from '../../package.json'
 export default defineConfig({
   title: '@renzp/idxdb',
   description: '一款零依赖、快速灵活、简单易用的indexedDB API库',
-  cleanUrls: true,
   lastUpdated: true,
   metaChunk: true,
   rewrites: {
