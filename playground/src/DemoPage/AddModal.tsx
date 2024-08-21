@@ -1,6 +1,6 @@
 import { useIdxDB } from '@/utils/db'
 import { useAsyncEffect } from 'ahooks'
-import { Form, Input, InputNumber, Modal, ModalProps, message } from 'antd'
+import { Form, Input, InputNumber, Modal, type ModalProps, message } from 'antd'
 import React from 'react'
 
 export interface AddModalProps extends ModalProps {

@@ -2,7 +2,7 @@ import { ProTable } from '@/components'
 import { useProTable } from '@/components/ProTable'
 import { useIdxDB } from '@/utils/db'
 import useModal from '@/utils/useModal'
-import { Data, Params, Service } from 'ahooks/lib/useAntdTable/types'
+import type { Data, Params, Service } from 'ahooks/lib/useAntdTable/types'
 import { App, Button, Divider, Form, Space } from 'antd'
 import React from 'react'
 import AddModal from './AddModal'
@@ -58,6 +58,16 @@ const DemoPage = () => {
     refresh()
   }
 
+  const onBatchUpdate = async () => {
+    const data = tableProps.dataSource.map((item) => ({
+      ...item,
+      age: Math.ceil(Math.random() * 100),
+    }))
+    await idxDB?.store('t_user')?.updateListByKeyPath(data)
+    message.success('操作成功')
+    refresh()
+  }
+
   const tools = (
     <Space>
       <Button type="primary" onClick={onShowAddModal}>
@@ -65,6 +75,9 @@ const DemoPage = () => {
       </Button>
       <Button type="primary" onClick={onBatchAdd}>
         批量新增
+      </Button>
+      <Button type="primary" onClick={onBatchUpdate}>
+        批量更新
       </Button>
     </Space>
   )
