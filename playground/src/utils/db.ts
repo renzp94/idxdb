@@ -23,7 +23,7 @@ export const initDB = async () => {
     stores: [
       {
         name: 't_user',
-        indexes: ['name', 'age'],
+        indexes: ['id', 'name', 'age'],
         keyPath: 'id',
       },
     ],
